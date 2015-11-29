@@ -1,0 +1,30 @@
+{
+  "name": "vue-component",
+  "version": "1.0.0",
+  "description": "vue组件库",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cycgit/vue-component.git"
+  },
+  "author": "cyc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cycgit/vue-component/issues"
+  },
+  "homepage": "https://github.com/cycgit/vue-component#readme",
+  "devDependencies": {
+    "babel-core": "^6.2.1",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.1.18",
+    "webpack": "^1.12.9"
+  },
+  "dependencies": {
+    "css-loader": "^0.23.0",
+    "extract-text-webpack-plugin": "^0.9.1",
+    "style-loader": "^0.13.0"
+  }
+}
