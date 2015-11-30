@@ -46,176 +46,196 @@
 
 	'use strict';
 
-	var _table = __webpack_require__(1);
+	var _select = __webpack_require__(1);
 
-	var _table2 = _interopRequireDefault(_table);
+	var _select2 = _interopRequireDefault(_select);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var x = new Vue({
-		el: '#target',
-		data: {
-			msg: '我是msg'
-		},
-		components: {
-			app: _table2.default
-		}
+	var lid = 311;
+
+	//决定表单 显示与否 外因：前一个没选。 内因自己为空
+
+	var a = new Vue({
+	    el: '#target',
+	    components: {
+	        selects: _select2.default
+	    }
 
 	});
-
-	var data = [{ name: '小明', age: 11, other: '其他的咯' }, { name: '小蔡', age: 20, other: '不知道' }, { name: 'hehe', age: 11, other: 'sda' }, { name: 'asda', age: 12, other: '2333' }];
-	x.$broadcast('inject', data);
 
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
-
-	var _pagination = __webpack_require__(6);
-
-	var _pagination2 = _interopRequireDefault(_pagination);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	var template = "\n        <select v-model=\"s1\" v-on:change=\"change(1)\"  v-if=\"l1\">\n         <option v-for=\"s in l1\" v-bind:value=\"s.id\">\n             {{ s.name }}\n         </option>\n         <option value=\"0\">未选择</option>\n        </select>\n    \n         <select v-model=\"s2\" v-on:change=\"change(2)\" v-if=\"s1!=0 && p != 2 && l2\">\n             <option v-for=\"s in l2\" v-bind:value=\"s.id\" v-if=\"s.level1 == s1\">\n             {{ s.name }}\n         </option>\n         <option value=\"0\">未选择</option>\n        </select>\n        \n         <select v-model=\"s3\" v-on:change=\"change(3)\" v-if=\"s2!=0 && p !=3 && l3\">\n                 <option v-for=\"s in l3\" v-bind:value=\"s.id\" v-if=\"s.level2 == s2\">\n             {{ s.name }}\n         </option>\n         <option value=\"0\">未选择</option>\n        </select>\n         <select v-model=\"s4\" v-on:change=\"change(4)\" v-if=\"s3!=0 && p !=4 && l4\">\n                  <option v-for=\"s in l4\" v-bind:value=\"s.id\" v-if=\"s.level3 == s3\">\n             {{ s.name }}\n         </option>\n         <option value=\"0\">未选择</option>\n        </select>\n    ";
 	__webpack_require__(2);
 
-	var template = '\n\t\t   <table class="table">\n                <thead>\n                <tr>\n                    <th>姓名</th>\n                    <th>年龄</th>\n                    <th>其他</th>\n                </tr>\n                </thead>\n                <tbody v-show="!loading">\n                <tr v-for="sm in show">\n                    <td>{{ sm.name }}</td>\n                    <td>{{ sm.age }}</td>      \n                    <td>{{ sm.other }}</td>\n                </tr>\n                </tbody>\n                <div class="table-info" v-show="loading">在加载</div>\n                <div class="table-info" v-show="noResult">没有纪录</div>\n           </table>\n               \n            <page all="1" cur="1" v-on:page="page"></page> \n\t\t\n\t\t';
+	var data1 = {
+	  "levels": {
+	    "level1": [{
+	      "name": "朗申测试代理",
+	      "id": 289,
+	      "level1": 0,
+	      "level2": 0,
+	      "level3": 0,
+	      "level4": 0
+	    }, {
+	      "name": "南京通广E线牵",
+	      "id": 294,
+	      "level1": 0,
+	      "level2": 0,
+	      "level3": 0,
+	      "level4": 0
+	    }, {
+	      "name": "合肥朗申工程技术有限公司",
+	      "id": 295,
+	      "level1": 0,
+	      "level2": 0,
+	      "level3": 0,
+	      "level4": 0
+	    }, {
+	      "name": "中能光电滁州有限公司",
+	      "id": 306,
+	      "level1": 0,
+	      "level2": 0,
+	      "level3": 0,
+	      "level4": 0
+	    }, {
+	      "name": "詹昌凯测试一级代理",
+	      "id": 308,
+	      "level1": 0,
+	      "level2": 0,
+	      "level3": 0,
+	      "level4": 0
+	    }],
+	    "level2": [{
+	      "name": "内蒙古",
+	      "id": 296,
+	      "level1": 294,
+	      "level2": 0,
+	      "level3": 0,
+	      "level4": 0
+	    }, {
+	      "name": "北京刘晓鹏",
+	      "id": 297,
+	      "level1": 294,
+	      "level2": 0,
+	      "level3": 0,
+	      "level4": 0
+	    }, {
+	      "name": "滁州二附小",
+	      "id": 307,
+	      "level1": 306,
+	      "level2": 0,
+	      "level3": 0,
+	      "level4": 0
+	    }, {
+	      "name": "詹昌凯测试二级代理",
+	      "id": 309,
+	      "level1": 308,
+	      "level2": 0,
+	      "level3": 0,
+	      "level4": 0
+	    }],
+	    "level3": [{
+	      "name": "詹昌凯测试三级代理",
+	      "id": 310,
+	      "level1": 308,
+	      "level2": 309,
+	      "level3": 0,
+	      "level4": 0
+	    }],
+	    "level4": [{
+	      "name": "詹昌凯测试四级代理",
+	      "id": 311,
+	      "level1": 308,
+	      "level2": 309,
+	      "level3": 310,
+	      "level4": 0
+	    }]
+	  },
+	  "level": "level0"
+	};
 
 	exports.default = Vue.extend({
-	    data: function data() {
-	        return { cur: 1, loading: false, first: true, source: [] };
-	    },
+	  data: function data() {
+	    return {
+	      cur: 0,
+	      p: 0,
+	      s1: 0,
+	      s2: 0,
+	      s3: 0,
+	      s4: 0,
+	      l1: [],
+	      l2: [],
+	      l3: [],
+	      l4: []
+	    };
+	  },
 
-	    template: template,
-	    computed: {
-	        show: function show() {
-	            var index = (this.cur - 1) * 3;
-	            return this.source.slice(index, index + 3);
-	        },
-	        noResult: function noResult() {
-	            if (this.first) return false;
-
-	            return this.source.length == 0 ? true : false;
-	        }
-	    },
-	    methods: {
-	        page: function page(index) {
-	            //改变页码
-	            this.cur = index;
-	        }
-	    },
-	    events: {
-	        inject: function inject(source) {
-	            this.first = false;
-	            this.cur = 1;
-	            this.source = source;
-
-	            this.$broadcast('init', Math.ceil(source.length / 3)); //通知导航栏
-	        }
-	    },
-	    components: {
-	        page: _pagination2.default
+	  template: template,
+	  ready: function ready() {
+	    this.cur = data1.level.substr(-1);
+	    if (this.cur != 0) {
+	      this["s" + this.cur] = this.lid;
 	    }
+
+	    this.l1 = data1.levels.level1;
+	    this.l2 = data1.levels.level2;
+	    this.l3 = data1.levels.level3;
+	    this.l4 = data1.levels.level4;
+	  },
+
+	  methods: {
+	    change: function change(data) {
+	      var index = 's' + data;
+	      this.p = data;
+	      this.reset(data); //置空后面s为0
+	      this.checkShow(data);
+
+	      if (this["s" + data] != 0) {
+	        this.$broadcast('ischange', this["s" + data]);
+	      } else {
+	        if (data == 1) {
+
+	          this.$broadcast('ischange', lid);
+	        } else {
+	          this.$broadcast('ischange', this["s" + (data - 1)]);
+	        }
+	      }
+	    },
+	    checkShow: function checkShow(i) {
+	      var s = i + 1;
+	      var l = this["l" + s];
+	      this.p = s;
+
+	      for (var k in l) {
+	        if (l[k]["level" + i] == this["s" + i]) {
+	          this.p = 0;
+	          return;
+	        }
+	      }
+	    },
+	    reset: function reset(index) {
+
+	      while (index < 4) {
+
+	        index++;
+	        this["s" + index] = 0;
+	      }
+	    }
+	  }
 
 	});
 
 /***/ },
 /* 2 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	__webpack_require__(7);
-
-	var template = '<div class="page-bar" v-show="show">\n            <ul>\n            <li @click="pre"><a>上一页</a></li>\n            <li  v-for="index in indexs"  v-bind:class="{ \'active\': cur == index}">\n                <a @click="click(index)">{{ index }}</a>\n            </li>\n                <li @click="next"><a>下一页</a></li>\n                <li><a>共<i>{{ all }}</i>页</a></li>\n            </ul>\n    </div>\n';
-
-	exports.default = Vue.extend({
-	    props: ['cur', 'all'],
-	    data: function data() {
-	        var obj = {};
-	        obj.cur = this.cur ? this.cur : 1;
-	        obj.all = this.all ? this.all : 1;
-	        return obj;
-	    },
-
-	    template: template,
-	    computed: {
-	        indexs: function indexs() {
-	            var left = 1;
-	            var right = this.all;
-	            var ar = [];
-	            if (this.all >= 11) {
-	                if (this.cur > 5 && this.cur < this.all - 4) {
-	                    left = this.cur - 5;
-	                    right = this.cur + 4;
-	                } else {
-	                    if (this.cur <= 5) {
-	                        left = 1;
-	                        right = 10;
-	                    } else {
-	                        right = this.all;
-	                        left = this.all - 9;
-	                    }
-	                }
-	            }
-	            while (left <= right) {
-	                ar.push(left);
-	                left++;
-	            }
-	            return ar;
-	        },
-	        show: function show() {
-	            return this.all <= 1 ? false : true;
-	        }
-	    },
-	    methods: {
-	        click: function click(index) {
-	            if (index != this.cur) {
-	                this.cur = index;
-	                this.$dispatch('page', index);
-	            }
-	        },
-	        next: function next() {
-	            if (this.cur != this.all) {
-	                this.cur++;
-	                this.$dispatch('page', this.cur);
-	            }
-	        },
-	        pre: function pre() {
-	            if (this.cur != 1) {
-	                this.cur--;
-	                this.$dispatch('page', this.cur);
-	            }
-	        }
-	    },
-	    events: {
-	        init: function init(all) {
-	            this.cur = 1;
-	            this.all = all;
-	        }
-	    }
-
-	});
-
-/***/ },
-/* 7 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

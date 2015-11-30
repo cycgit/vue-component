@@ -1,24 +1,15 @@
-import table from '../component/table'
+var lid = 311
+
+//决定表单 显示与否 外因：前一个没选。 内因自己为空
 
 
+import selects from '../component/select'
 
-var x = new Vue({
-	el: '#target',
-	data:{
-		msg: '我是msg'
-	},
-	components: {
-		app: table
-	}
+    
+var a = new Vue({
+    el: '#target',
+    components: {
+        selects: selects
+    }
 
-})
-
-
-var data = [
-{name: '小明', age: 11, other: '其他的咯'},
-{name: '小蔡', age: 20, other: '不知道'},
-{name: 'hehe', age: 11, other: 'sda'},
-{name: 'asda', age: 12, other: '2333'}
-
-]
-x.$broadcast('inject', data)
+})    
