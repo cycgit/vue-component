@@ -1,5 +1,3 @@
-# the key
-key.js
 
 # OS X
 .DS_Store*
@@ -16,5 +14,5 @@ node_modules/
 .idea/
 .idea
 
-# static images
-static/blog
+apps/
+build/
