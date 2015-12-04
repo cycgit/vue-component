@@ -1,0 +1,20 @@
+.upl-area{
+    border: 1px solid black;
+    padding: 5px;
+    overflow: hidden;
+    width: 500px;
+    
+}
+.upl-block{
+    border: 1px solid black;
+    margin: 5px;
+    float: left;
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+.upl-d{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}

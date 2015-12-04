@@ -1,9 +1,10 @@
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-
+var path = require('path');
 
 module.exports = {
     entry: './entry.js',
     output: {
+        path: '/Users/cycok/agit/scard_homeschool/public/js/build',
         filename: 'build.js'
     },
     module:{

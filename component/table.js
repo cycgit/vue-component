@@ -6,9 +6,13 @@ var template = `
 		   <table class="table">
                 <thead>
                 <tr>
-                    <th>姓名</th>
-                    <th>年龄</th>
-                    <th>其他</th>
+                    <th>通知标题</th>
+                    <th>通知时间</th>
+                    <th>发送时间</th>
+                    <th>发送者</th>
+                    <th>发送状态</th>
+                    <th>接收方</th>
+                    <th>操作</th>
                 </tr>
                 </thead>
                 <tbody v-show="!loading">
@@ -23,11 +27,7 @@ var template = `
            </table>
                
             <page all="1" cur="1" v-on:page="page"></page> 
-		
 		`
-
-
-
 
 export default Vue.extend({
 	data(){
@@ -52,7 +52,6 @@ export default Vue.extend({
        page(index){
         //改变页码
           this.cur = index
-            
        }
     },
 	events:{
@@ -60,7 +59,6 @@ export default Vue.extend({
     		this.first = false
     		 this.cur = 1
 		     this.source = source
-
 		     this.$broadcast('init', Math.ceil(source.length/3)) //通知导航栏
     	}
 

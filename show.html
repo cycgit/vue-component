@@ -3,19 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>测试组件</title>
-    <style>
-        #target{
-        margin-top: 100px
-        }
-    </style>
+    <link rel="stylesheet" href="css/upload.css">
 </head>
 <body>
     <div id="target">
-      <selects></selects>
+        <div class="upl-wrap">
+            <div id="target">
+            
+        <form v-el:filew style="display:none">
+        <input type="file" v-on:change="change" v-el:file  accept="image/jpg,image/png,image/jpeg">
+        </form>    
+               
+        <span class="upl-file" @click="clickfile">点击上传</span>
+                <span>网络图片 {{ msg }}</span>
+                <input type="text" placeholder="网络url地址" v-model="httpUrl">
+                <span @click="addUrl">添加</span>
+            </div>
+
+            <div class="upl-area">       
+            <div class="upl-block" v-for="pic in pics">
+               {{ pic.url }}
+    <span class="upl-d" @click="del(pic)">x</span>
+            </div>
+            
+            
+            
+            </div>
+            
+
+        </div>
     </div>
     
+    <input type="file" id="sss">
+
     <script src="apps/vue.js"></script>
-    <script src="apps/build.js"></script>
+    <script src="apps/entry.js"></script>
       
 </body>
 </html>
